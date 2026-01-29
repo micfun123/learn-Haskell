@@ -25,3 +25,10 @@ isEven a = divisibleBy a 2
 
 averageThree :: Int -> Int -> Int -> Float
 averageThree a b c = fromIntegral (a + b + c) / 3
+
+applyDiscount :: Float -> Int -> Float
+applyDiscount price percent = price * (1 - fromIntegral percent / 100)
+
+absolute :: Int -> Int
+absolute n = if n < 0 then -n else n
+
