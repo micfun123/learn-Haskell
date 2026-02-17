@@ -101,5 +101,10 @@ findRoot :: Int -> Int -> Int
 findRoot n s
   | s * s <= n = s
   | otherwise  = findRoot n (s - 1)
-
 -}
+
+findRoot :: Int -> Int -> Int
+findRoot n s = check (s * s <= n)
+  where
+    check True  = s
+    check False = findRoot n (s - 1)
