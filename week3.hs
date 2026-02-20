@@ -25,6 +25,14 @@ True && True = True
 _    && _    = False
 -}
 
+{-
+(&&) :: Bool -> Bool -> Bool
+True  && True  = True
+True  && False = False
+False && True  = False
+False && False = False
+-}
+
 (&&) :: Bool -> Bool -> Bool
 True  && p = p
 False && _ = False
