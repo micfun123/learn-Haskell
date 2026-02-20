@@ -52,6 +52,10 @@ exOr :: Bool -> Bool -> Bool
 exOr True p = not p
 exOr False p = p
 
+ifThenElse :: Bool -> Int -> Int -> Int
+ifThenElse True  x _ = x
+ifThenElse False _ y = y
+
 daysInMonth :: Int -> Int
 daysInMonth 1  = 31 
 daysInMonth 2  = 28 
@@ -78,9 +82,22 @@ sumSquares :: Int -> Int
 sumSquares 0 = 0
 sumSquares n = n ^ 2 + sumSquares ( n-1 )
 
+{-
+sumSquares :: Int -> Int
+sumSquares n
+  | n == 0    = 0
+  | otherwise = (n * n) + sumSquares (n - 1)
+-}
+
 power :: Int -> Int -> Int
 power _ 0 = 1
 power n p = n * power n (p - 1)
+
+{-
+power :: Int -> Int -> Int
+power _ 0 = 1
+power n p = n * power n (p - 1)
+-}
 
 sumFromTo :: Int -> Int -> Int
 sumFromTo start end
@@ -90,6 +107,14 @@ sumFromTo start end
 gcd :: Int -> Int -> Int
 gcd a 0 = a
 gcd a b = gcd b (mod a b)
+
+{-
+gcd :: Int -> Int -> Int
+gcd a b
+  | a == b    = a
+  | a > b     = gcd (a - b) b
+  | otherwise = gcd a (b - a) 
+-}
 
 
 intSquareRoot :: Int -> Int
