@@ -57,35 +57,33 @@ daysInMonth month year
     isLeap = mod year 4 == 0
 
 {-
-WRITTEN EXERCISES
-
-1. sumThree 3 5 7
-   -> 3 + 5 + 7
-   -> 8 + 7
+1. sumThree 3 5 7 | Definition
+   -> 3 + 5 + 7  | Addition
+   -> 8 + 7 | Addition
    -> 15
 
-   sumThree 8 (1 + 3) 2
-   -> 8 + (1 + 3) + 2
-   -> 8 + 4 + 2
+   sumThree 8 (1 + 3) 2 | Definition
+   -> 8 + (1 + 3) + 2 | Addition
+   -> 8 + 4 + 2 | Addition
    -> 14
 
-2. threeDifferent 1 4 2
-   -> 1 /= 4 && 4 /= 2 && 1 /= 2
-   -> True && True && True
+2. threeDifferent 1 4 2  | Definition
+   -> 1 /= 4 && 4 /= 2 && 1 /= 2   | Comparison
+   -> True && True && True  | Logical AND
    -> True
 
-   threeDifferent 1 7 7
-   -> 1 /= 7 && 7 /= 7 && 1 /= 7
-   -> True && False && True
+   threeDifferent 1 7 7  | Definition
+   -> 1 /= 7 && 7 /= 7 && 1 /= 7  | Comparison
+   -> True && False && True   | Logical AND
    -> False
 
-3. howManyEqual 3 5 2
-   -> 3 == 5 && 5 == 2 (False)
-   -> 3 == 5 || 5 == 2 || 3 == 2 (False)
+3. howManyEqual 3 5 2  | Definition
+   -> 3 == 5 && 5 == 2 (False)  | Comparison
+   -> 3 == 5 || 5 == 2 || 3 == 2 (False)  | Comparison
    -> 0 (otherwise)
 
-   howManyEqual 5 2 5
-   -> 5 == 2 && 2 == 5 (False)
-   -> 5 == 2 || 2 == 5 || 5 == 5 (True)
+   howManyEqual 5 2 5  | Definition
+   -> 5 == 2 && 2 == 5 (False)  | Comparison
+   -> 5 == 2 || 2 == 5 || 5 == 5 (True)  | Comparison
    -> 2
 -}
