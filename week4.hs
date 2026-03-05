@@ -1,4 +1,10 @@
 import Data.Char
+type StudentMark = (String, Int)
+
+
+testData = [("Alice", 85), ("Bob", 72), ("Charlie", 58), ("David", 45), ("Eve", 30)]
+
+
 
 sumDifference :: Int -> Int -> (Int,Int)
 sumDifference a b = (a + b, a - b)
@@ -40,7 +46,9 @@ capMarks :: [StudentMark] -> [StudentMark]
 capMarks marks = [capMark mark | mark <- marks]
 
 gradeStudents :: [StudentMark] -> [(String,Char)]
-gradeStudents marks = [(name, grade mark) | (name, mark) <- marks]
+gradeStudents marks = [(name, grade (name, mark)) | (name, mark) <- marks]
+
+
 
 duplicate:: String -> Int -> String
 duplicate str 0 = ""
