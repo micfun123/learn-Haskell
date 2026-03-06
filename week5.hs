@@ -87,3 +87,22 @@ listMarks name ((n, m):xs)
     | name == n = m : listMarks name xs
     | otherwise = listMarks name xs
 
+sorted :: [Int] -> Bool
+sorted (x:xs) = case xs of
+    [] -> True
+    (y:ys) -> x <= y && sorted xs
+
+
+prefix :: [Int] -> [Int] -> Bool
+prefix [] _ = True
+prefix _ [] = False
+prefix (x:xs) (y:ys)
+    | x == y = prefix xs ys
+    | otherwise = False
+
+subSequence :: [Int] -> [Int] -> Bool
+subSequence [] _ = True
+subSequence _ [] = False
+subSequence (x:xs) (y:ys)
+    | x == y = subSequence xs ys
+    | otherwise = subSequence (x:xs) ys
