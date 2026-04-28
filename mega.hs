@@ -1,3 +1,5 @@
+import Data.Char
+
 add :: Int -> Int -> Int
 add x y = x + y
 
@@ -8,11 +10,6 @@ fib :: Int -> Int
 fib 0 = 0
 fib 1 = 1
 fib n = fib (n - 1) + fib (n - 2)
-
-main :: IO ()
-main = print (fib 10)
-
-import Data.Char
 
 testData :: [Int]
 testData = [4,5,7,3,1]
@@ -104,9 +101,6 @@ height (Node _ lnode rnode) = 1 + max (height lnode) ( height rnode)
 square :: Int -> Int
 square x = x * x
 
-main :: IO ()
-main = putStrLn "words"
-
 sayHello :: IO ()
 sayHello = do
   putStrLn "hello"
@@ -165,8 +159,8 @@ tallest (b1, h1) (b2,h2)
 fst' (x,_) = x
 snd' (_,y) = y
 
-raise :: (String,Int) -> Int -> (String, Int)
-raise (b,n) m = (b,n + m)
+raise' :: (String,Int) -> Int -> (String, Int)
+raise' (b,n) m = (b,n + m)
 
 -- Strings
 
@@ -184,16 +178,6 @@ f :: Int -> [Int] -> [Int]
 f _ [] = []
 f n (x:zs) = replicate n x ++ f n zs
 
-
--- This part handles the Input and Output and can be used as it is. Do not modify this part.
-main :: IO ()
-main = getContents >>=
-       mapM_ print. (\(n:arr) -> f n arr). map read. words
-
-       fac n
-  n <= 1 = 1
-  otherwuse = n * fac ( n -1 )
-
 sumFromTo :: Int -> Int -> Int
 sumFromTo start end =
   case compare start end of
@@ -201,8 +185,8 @@ sumFromTo start end =
     _  -> start + sumFromTo (start + 1) end
 
 
-square :: Int -> Int
-square n = n * n
+square' :: Int -> Int
+square' n = n * n
 
 mult2 :: Int -> Int
 mult2 x = 2 * x
@@ -256,8 +240,8 @@ absolute :: Int -> Int
 absolute n = if n < 0 then -n else n
 
 
-absolute :: Int -> Int
-absolute n
+absolute' :: Int -> Int
+absolute' n
   | n < 0     = -n
   | otherwise = n
 
@@ -345,11 +329,7 @@ daysInMonth month year
    -> 2
 -}
 
-import Data.Char
 type StudentMark = (String, Int)
-
-
-testData = [("Alice", 85), ("Bob", 72), ("Charlie", 58), ("David", 45), ("Eve", 30)]
 
 
 
@@ -502,17 +482,6 @@ removeAllButFirst n (x:zs)
     | otherwise = x : removeAllButFirst n zs
 
 
-type StudentMark = (String, Int)
-testData :: [StudentMark]
-testData =[ 
-    ("John", 53),
-    ("Sam", 16),
-    ("Kate", 85),
-    ("Jill", 65),
-    ("Bill", 37),
-    ("Amy", 22),
-    ("Jack", 41),
-    ("Sue", 71)]
 
     
 listMarks :: String -> [StudentMark] -> [Int]
@@ -541,8 +510,8 @@ subSequence (x:xs) (y:ys)
     | x == y = subSequence xs ys
     | otherwise = subSequence (x:xs) ys
 
-f :: [Int] -> [Int]
-f lst = [x | (x,y) <- zip lst [0..], mod y 2 == 1 ]
+everOtherItem :: [Int] -> [Int]
+everOtherItem lst = [x | (x,y) <- zip lst [0..], mod y 2 == 1 ]
 
 rev [] = []
 rev (x:xs) = rev xs ++ [x]
@@ -551,3 +520,7 @@ rev (x:xs) = rev xs ++ [x]
 isodd n = mod n 2 == 1
 
 test1321321 arr = sum $ filter isodd arr
+
+
+len :: [a] -> Int
+len lst = (last [y | (x,y) <- zip lst [0..]]) + 1
