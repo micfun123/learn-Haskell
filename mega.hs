@@ -540,3 +540,14 @@ subSequence _ [] = False
 subSequence (x:xs) (y:ys)
     | x == y = subSequence xs ys
     | otherwise = subSequence (x:xs) ys
+
+f :: [Int] -> [Int]
+f lst = [x | (x,y) <- zip lst [0..], mod y 2 == 1 ]
+
+rev [] = []
+rev (x:xs) = rev xs ++ [x]
+
+
+isodd n = mod n 2 == 1
+
+test1321321 arr = sum $ filter isodd arr
