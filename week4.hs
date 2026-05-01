@@ -40,7 +40,7 @@ capitalise :: String -> String
 capitalise str = [toUpper c | c <- str]
 
 onlyDigits :: String -> String
-onlyDigits str = [c | c <- str, isDigit c]
+onlyDigits str = [c | c <- str, isDigit c]  
 
 capMarks :: [StudentMark] -> [StudentMark]
 capMarks marks = [capMark mark | mark <- marks]
