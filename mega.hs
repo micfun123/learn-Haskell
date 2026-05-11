@@ -19,7 +19,6 @@ raise (b,h) m = (b, h + m)
 
 buildingNames blds = [ b | (b,_) <- blds]
 
-
 eventNumbers nums = [ x | x <- nums, even x]
 
 head' (x:xs) = x
