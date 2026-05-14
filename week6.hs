@@ -75,3 +75,19 @@ alwaysPositive' f xs = all (\x -> f x >= 0) xs
 
 alwaysPositive''' :: (Float -> Float) -> [Float] -> Bool
 alwaysPositive''' f = (>= 0) . sum . map f
+
+productSquareRoots :: [Float] -> Float
+productSquareRoots xs = sqrt ( sum ( filter (>0) xs))
+
+productSquareRoots' :: [Float] -> Float
+productSquareRoots' = sqrt . sum . filter (>0)
+
+removeFirst :: (a -> Bool) -> [a] -> [a]
+removeFirst _ []     = []
+removeFirst p (x : xs)
+  | p x = xs
+  | otherwise = x : removeFirst p xs
+
+
+removeLast :: (a -> Bool) -> [a] -> [a]
+removeLast f xs = reverse (removeFirst f (reverse xs))
