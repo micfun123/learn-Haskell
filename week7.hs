@@ -140,3 +140,18 @@ numberOfDays February year
 numberOfDays month _
     | month `elem` [April, June, September, November] = 30
     | otherwise                                       = 31
+
+data Point = Point Float Float
+             deriving (Show)
+
+data PositionedShape = PositionedShape Shape Point
+                     deriving (Show)
+                    
+move :: PositionedShape -> Float -> Float -> PositionedShape
+move (PositionedShape shape (Point x y)) dx dy =
+    PositionedShape shape (Point (x + dx) (y + dy))
+
+numberOfNodes :: Tree -> Int
+numberOfNodes Null = 0
+numberOfNodes (Node _ st1 st2) = 1 + numberOfNodes st1 + numberOfNodes st2
+

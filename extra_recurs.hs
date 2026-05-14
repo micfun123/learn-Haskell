@@ -1,3 +1,6 @@
+import Data.Char 
+import Data.List
+
 -- Factorial
 factorial :: Integer -> Integer
 factorial 0 = 1
@@ -40,3 +43,30 @@ countIf _ []     = 0
 countIf p (x:xs)
   | p x       = 1 + countIf p xs
   | otherwise = countIf p xs
+
+countChars :: Char -> String -> Int
+countChars _ []     = 0
+countChars c (x:xs)
+  | c == x    = 1 + countChars c xs
+  | otherwise = countChars c xs
+
+isPalindrome :: String -> Bool
+isPalindrome []  = True
+isPalindrome [_] = True
+isPalindrome (x:xs)
+  | x == last xs = isPalindrome (init xs)
+  | otherwise    = False
+
+replace :: String -> String -> String -> String
+replace _ _ [] = []
+replace old new str@(x:xs)
+  | take (length old) str == old = new ++ replace old new (drop (length old) str)
+  | otherwise                    = x : replace old new xs
+
+wordCount :: String -> Int
+wordCount [] = 0
+wordCount str =
+  let (_, rest) = break (== ' ') (dropWhile (== ' ') str)
+  in if null (dropWhile (== ' ') str)
+     then 0
+     else 1 + wordCount rest

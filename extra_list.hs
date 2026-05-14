@@ -44,3 +44,7 @@ transpose' xss = [head xs | xs <- xss] : transpose' [tail xs | xs <- xss]
 -- Nested comprehension: multiplication table
 mulTable :: [[Int]]
 mulTable = [[x * y | x <- [1..5]] | y <- [1..5]]
+
+greaterthan :: [(Int, Int)] -> [Bool]
+greaterthan pairs = [x > y | (x, y) <- pairs]
+
