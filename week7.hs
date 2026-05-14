@@ -114,3 +114,29 @@ formatCar cars i = printf "%d- %s %s costs %.2f pounds" (i+1) (getMake c) (getMo
     (getPrice c)
   where
     c = cars !! i
+
+data Month = January | February | March | April | May | June
+           | July | August | September | October | November | December
+           deriving (Show, Eq, Ord, Enum)
+
+data Season = Spring | Summer | Autumn | Winter
+              deriving (Show, Eq)
+
+season' :: Month -> Season
+season' m
+    | m `elem` [December, January, February] = Winter
+    | m `elem` [March, April, May]            = Spring
+    | m `elem` [June, July, August]           = Summer
+    | otherwise                               = Autumn
+
+season :: Month -> Season
+season m = [Spring, Summer, Autumn, Winter, Winter] !! (fromEnum m `div` 3)
+
+
+numberOfDays :: Month -> Int -> Int
+numberOfDays February year
+    | year `mod` 4 == 0 = 29
+    | otherwise         = 28
+numberOfDays month _
+    | month `elem` [April, June, September, November] = 30
+    | otherwise                                       = 31
