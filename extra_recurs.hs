@@ -70,3 +70,20 @@ wordCount str =
   in if null (dropWhile (== ' ') str)
      then 0
      else 1 + wordCount rest
+
+titleCase :: String -> String
+titleCase [] = []
+titleCase str = unwords (map capitalise (words str))
+  where
+    capitalise []     = []
+    capitalise (x:xs) = toUpper x : xs
+
+
+compress :: String -> String
+compress [] = []
+compress (x:xs) = encode x (length same + 1) ++ compress rest
+  where
+    (same, rest) = span (== x) xs
+
+    encode c 1 = [c]
+    encode c n = show n ++ [c]
