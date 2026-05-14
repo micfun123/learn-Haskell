@@ -91,3 +91,6 @@ removeFirst p (x : xs)
 
 removeLast :: (a -> Bool) -> [a] -> [a]
 removeLast f xs = reverse (removeFirst f (reverse xs))
+
+reverse' :: [a] -> [a]
+reverse' = foldl (\acc x -> x : acc) []
