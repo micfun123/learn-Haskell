@@ -12,8 +12,12 @@ Using guards, write a movieRating function that takes an integer score
 otherwise    -> "Poor"
 -}
 
--- movieRating :: Int -> String
-
+movieRating :: Int -> String
+movieRating n
+    | n >= 85 = "Excellent"
+    | n >= 70 = "Good"
+    | n >= 50 = "Average"
+    | otherwise = "poor"
 
 {-
 Exercise 2 - 4 marks
@@ -42,7 +46,8 @@ classifyAge age
     | age >= 13 = "Teen"
     | otherwise = "Child"
 
--- classifyPeople :: [(String, Int)] -> [(String, String)]
+classifyPeople :: [(String, Int)] -> [(String, String)]
+classifyPeople x = [(name, classification ) | (name, temp) <- x, let classification = classifyAge temp]
 -- *** Add your code here ***
 
 
@@ -58,7 +63,12 @@ testWords :: [String]
 testWords =
     ["cat", "elephant", "tree", "encyclopedia", "sun"]
 
--- longWords :: Int -> [String] -> [String]
+longWords :: Int -> [String] -> [String]
+longWords _ [] = []
+longWords n (x:xs)
+    | length x >= n = x : longWords n xs
+    | otherwise = longWords n xs 
+    
 -- *** Add your code here ***
 
 
@@ -78,7 +88,12 @@ testScores =
      ("Dave", 91),
      ("Eve", 33)]
 
--- passingScores :: Int -> [(String, Int)] -> [String]
+passingScores :: Int -> [(String, Int)] -> [String]
+passingScores passMark students = map fst (filter ((>= passMark) . snd) students)
+
+passingScores' :: Int -> [(String, Int)] -> [String]
+passingScores' passMark students = map fst (filter (\(_, score) -> score >= passMark) students)
+  
 -- *** Add your code here ***
 
 
@@ -94,7 +109,12 @@ squareEvens [1,2,3,4,5]
 returns [4,16]
 -}
 
--- squareEvens :: [Int] -> [Int]
+squareEvens :: [Int] -> [Int]
+squareEvens xs = map (^2) (filter (\x -> mod x 2 == 0) xs)
+
+
+squareEvens' :: [Int] -> [Int]
+squareEvens' xs = map (^2) (filter even xs)
 -- *** Add your code here ***
 
 
@@ -118,8 +138,9 @@ testTree =
             (Branch 15 Leaf Leaf)
             Leaf)
 
--- countLeaves :: Tree -> Int
--- *** Add your code here ***
+countLeaves :: Tree -> Int
+countLeaves Leaf = 1
+countLeaves (Branch _ left right) = countLeaves left + countLeaves right
 
 
 {-
@@ -141,8 +162,8 @@ because:
 2*3 = 6
 -}
 
--- pairProducts :: [Int] -> [Int]
--- *** Add your code here ***
+pairProducts :: [Int] -> [Int]
+pairProducts xs = [x * y | x <- xs, y <- xs , x < y]
 
 
 {-
@@ -165,7 +186,9 @@ testBasket =
         (Item "Banana" 2
             (Item "Orange" 5 Empty))
 
--- totalItems :: Basket -> Int
+totalItems :: Basket -> Int
+totalItems Empty = 0
+totalItems (Item _ n xs) = n + totalItems xs
 -- *** Add your code here ***
 
 
@@ -185,35 +208,35 @@ test = do
     putStrLn $ "51 -> " ++ show (movieRating 51)
     putStrLn $ "22 -> " ++ show (movieRating 22)
 
-    -- putStrLn "\nExercise 2"
+    putStrLn "\nExercise 2"
 
-    -- putStrLn $ show (classifyPeople testPeople)
+    putStrLn $ show (classifyPeople testPeople)
 
-    -- putStrLn "\nExercise 3"
+    putStrLn "\nExercise 3"
 
-    -- putStrLn $ show (longWords 5 testWords)
-    -- putStrLn $ show (longWords 8 testWords)
+    putStrLn $ show (longWords 5 testWords)
+    putStrLn $ show (longWords 8 testWords)
 
-    -- putStrLn "\nExercise 4"
+    putStrLn "\nExercise 4"
 
-    -- putStrLn $ show (passingScores 50 testScores)
-    -- putStrLn $ show (passingScores 70 testScores)
+    putStrLn $ show (passingScores 50 testScores)
+    putStrLn $ show (passingScores 70 testScores)
 
-    -- putStrLn "\nExercise 5"
+    putStrLn "\nExercise 5"
 
-    -- putStrLn $ show (squareEvens [1,2,3,4,5,6])
+    putStrLn $ show (squareEvens [1,2,3,4,5,6])
 
-    -- putStrLn "\nExercise 6"
+    putStrLn "\nExercise 6"
 
-    -- putStrLn $ show (countLeaves testTree)
-    -- putStrLn $ show (countLeaves Leaf)
+    putStrLn $ show (countLeaves testTree)
+    putStrLn $ show (countLeaves Leaf)
 
-    -- putStrLn "\nExercise 7"
+    putStrLn "\nExercise 7"
 
-    -- putStrLn $ show (pairProducts [1,2,3])
-    -- putStrLn $ show (pairProducts [2,4,6])
+    putStrLn $ show (pairProducts [1,2,3])
+    putStrLn $ show (pairProducts [2,4,6])
 
-    -- putStrLn "\nExercise 8"
+    putStrLn "\nExercise 8"
 
-    -- putStrLn $ show (totalItems testBasket)
-    -- putStrLn $ show (totalItems Empty)
+    putStrLn $ show (totalItems testBasket)
+    putStrLn $ show (totalItems Empty)
